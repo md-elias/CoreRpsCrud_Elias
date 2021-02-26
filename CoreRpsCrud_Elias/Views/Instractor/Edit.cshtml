@@ -1,0 +1,78 @@
+﻿@model CoreRpsCrud_Elias.ViewModels.InstractorViewModel
+@{ ViewData["Title"] = "Edit"; }
+    <div class="card" style="padding:40px; border-radius:50px; background-color:#AAADA8">
+        <div class="card-header" style="border-radius: 30px; background-color:#4E5950;color: white">
+            <h3 class="text-uppercase" style="text-align:center">Modify Instractor Details</h3>
+        </div>
+        <div class="card-body" style="background-color:#808080;border-radius: 30px">
+            <form asp-action="Edit" enctype="multipart/form-data">
+                <input type="hidden" asp-for="Id" />
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="InstractorName" class="control-label"></label>
+                            <input asp-for="InstractorName" class="form-control" />
+                            <span asp-validation-for="InstractorName" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="ProfilePicture" class="control-label"></label>
+                            <div class="custom-file">
+                                <input asp-for="ProfilePicture" class="custom-file-input" />
+                                <label class="custom-file-label" for="customFile">Choose file</label>
+                            </div>
+                            <span asp-validation-for="ProfilePicture" class="text-danger"></span>
+                            <img src="~/Uploads/@Model.ExistingImage" class="img-thumbnail" height="80" width="80" asp-append-version="true" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="EmailAddress" class="control-label"></label>
+                            <input asp-for="EmailAddress" class="form-control" />
+                            <span asp-validation-for="EmailAddress" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="CellPhone" class="control-label"></label>
+                            <input asp-for="CellPhone" class="form-control" />
+                            <span asp-validation-for="CellPhone" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="ContactAddress" class="control-label"></label>
+                            <input asp-for="ContactAddress" class="form-control" />
+                            <span asp-validation-for="ContactAddress" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="JoiningDate" class="control-label"></label>
+                            <input asp-for="JoiningDate" class="form-control" />
+                            <span asp-validation-for="JoiningDate" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-sm btn-info rounded-0"><i class="fa fa-pencil-alt"></i> Update</button>
+                    <a asp-action="Index" class="btn btn-sm btn-primary rounded-0"><i class="fas fa-fast-backward"></i> Back to List</a>
+                </div>
+            </form>
+        </div>
+    </div>
+@section Scripts {
+    <script>
+    // Add the following code if you want the name of the file appear on select
+        $(".custom-file-input").on("change", function () {
+            var fileName = $(this).val().split("\\").pop();
+            $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+        });</script>
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

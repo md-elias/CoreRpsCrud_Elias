@@ -1,0 +1,68 @@
+﻿@model IEnumerable<CoreRpsCrud_Elias.Models.Admission>
+
+    <div class="col-md-9 offset-md-2">
+
+        <h1 class="text-center"><i class="fas fa-comments-dollar text-success"></i>Admission History</h1>
+
+
+        <table class="table">
+            <thead class="thead-light">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.TraineeID)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CourseName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.AdmissionDate)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CourseFee)
+                    </th>
+                    <th>
+                        <a onclick="showInPopup('@Url.Action("AddOrEdit","Admission",null,Context.Request.Scheme)','New Admission')" class="btn btn-success text-white"><i class="fas fa-random"></i> New Admission</a>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TraineeID)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CourseName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.AdmissionDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CourseFee)
+                        </td>
+                        <td>
+                            <div>
+                                <form asp-action="Delete" asp-route-id="@item.AdmissionId" onsubmit="return jQueryAjaxDelete(this)" class="d-inline">
+                                    <a onclick="showInPopup('@Url.Action("AddOrEdit","Admission",new {id=item.AdmissionId},Context.Request.Scheme)','Update Admission')" class="btn btn-info text-white"><i class="fas fa-pencil-alt"></i> Edit</a>
+
+                                    <input type="hidden" asp-for="@item.AdmissionId" />
+                                    <input type="submit" value="Delete" class="btn btn-danger" />
+
+                                </form>
+                            </div>
+                            @*<div>
+                                
+                                <form asp-action="Delete" asp-route-id="@item.AdmissionId" onsubmit="return jQueryAjaxDelete(this)" class="d-inline">
+                                    <a onclick="showInPopup('@Url.Action("AddOrEdit","Admission",new {id=item.AdmissionId},Context.Request.Scheme)','Update Admission')" class="btn btn-info text-white"><i class="fas fa-pencil-alt"></i> Edit</a>
+                                    <input type="hidden" asp-for="@item.AdmissionId" />
+                                    <input type="submit" value="Delete" class="btn btn-danger" />
+
+                                </form>
+                            </div>*@
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>

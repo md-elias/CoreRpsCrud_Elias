@@ -1,0 +1,52 @@
+﻿@model IEnumerable<CoreRpsCrud_Elias.Models.Instractor>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<h3 class="text-center text-uppercase">Instractor Details</h3>
+<p>
+    @*<a asp-action="Create" class="btn btn-primary rounded-0"><i class="fa fa-plus-circle"></i> Add New</a>*@
+    <a asp-action="Create" class="btn btn-warning"><i class="fa fa-plus-circle"></i> Add New</a>
+</p>
+
+<table class="table table-bordered table-striped">
+    <thead style="background-position:left">
+        <tr style="background-color:#828580; color:white">
+            <th>@Html.DisplayNameFor(model => model.InstractorName)</th>
+            <th>@Html.DisplayNameFor(model => model.EmailAddress)</th>
+            <th>@Html.DisplayNameFor(model => model.CellPhone)</th>
+            <th>@Html.DisplayNameFor(model => model.ContactAddress)</th>
+            <th>@Html.DisplayNameFor(model => model.JoiningDate)</th>
+            <th>@Html.DisplayNameFor(model => model.ProfilePicture)</th>
+
+            <th>Action(s)</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+         {
+         <tr>
+
+            <td>@item.InstractorName</td>
+            <td>@item.EmailAddress</td>
+            <td>@item.CellPhone</td>
+            <td>@item.ContactAddress</td>
+            <td>
+                @Html.DisplayFor(modelItem => item.JoiningDate)
+            </td>
+            <td>
+                <a asp-action="Details" asp-route-id="@item.InstractorID">
+                    <img src="~/Uploads/@item.ProfilePicture" class="img-thumbnail" height="50" width="50" asp-append-version="true" />
+                </a>
+            </td>
+            @*<td>@item.JoiningDate.ToString("H:mm")</td>*@
+
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.InstractorID" class="btn btn-sm btn-info rounded-0"><i class="fa fa-pencil-alt"></i>Edit</a>
+                <a asp-action="Delete" asp-route-id="@item.InstractorID" class="btn btn-sm btn-danger rounded-0"><i class="fa fa-trash-alt"></i>Delete</a>
+            </td>
+        </tr>}
+    </tbody>
+</table>

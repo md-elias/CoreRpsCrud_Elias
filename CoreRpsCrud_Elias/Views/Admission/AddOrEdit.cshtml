@@ -1,0 +1,77 @@
+﻿@model CoreRpsCrud_Elias.Models.Admission
+
+@{ Layout = null; }
+
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="AddOrEdit" asp-route-id="@Model.AdmissionId" onsubmit="return jQueryAjaxPost(this);">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="AdmissionId" />
+            @*<input type="hidden" asp-for="AdmissionDate" />*@
+            <div class="form-group">
+                <label asp-for="TraineeID" class="control-label"></label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">#</div>
+                    </div>
+                    <input asp-for="TraineeID" class="form-control" />
+                </div>
+                <span asp-validation-for="TraineeID" class="text-danger"></span>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="CourseName" class="control-label"></label>
+                        <input asp-for="CourseName" class="form-control" />
+                        <span asp-validation-for="CourseName" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="InstractorName" class="control-label"></label>
+                        <input asp-for="InstractorName" class="form-control" />
+                        <span asp-validation-for="InstractorName" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="TransanctionId" class="control-label"></label>
+                        <input asp-for="TransanctionId" class="form-control" />
+                        <span asp-validation-for="TransanctionId" class="text-danger"></span>
+                    </div>
+                </div>
+
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="CourseFee" class="control-label"></label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <i class="fas fa-dollar-sign"></i>
+                                </div>
+                            </div>
+                            <input asp-for="CourseFee" class="form-control" />
+                        </div>
+                        <span asp-validation-for="CourseFee" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="AdmissionDate" class="control-label"></label>
+                        <input asp-for="AdmissionDate" class="form-control" />
+                        <span asp-validation-for="AdmissionDate" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-6 offset-md-3">
+                    <input type="submit" value="Submit" class="btn btn-primary btn-block" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
